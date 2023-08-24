@@ -3,6 +3,21 @@ import { getUserById } from "../services/get-user-by-id";
 import OthersUsers from "../components/others-users";
 import { getUsers } from "../services/get-users";
 
+type Props = {
+  params: {
+    id: string;
+  };
+};
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const post = await getUserById(params.id);
+
+  return {
+    title: "post.title",
+    description: "post.title",
+  };
+}
+
 export async function generateStaticParams() {
   const users = await getUsers();
   const usersIds = users.map((user: any) => ({
@@ -10,10 +25,7 @@ export async function generateStaticParams() {
   }));
   return usersIds;
 }
-export const metadata: Metadata = {
-  title: "Passar como props",
-  description: "Passar como props",
-};
+
 export default async function UserDetailPage({
   params,
 }: {

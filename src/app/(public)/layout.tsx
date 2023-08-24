@@ -1,6 +1,18 @@
-export const metadata = {
-  title: "Rota pública",
-  description: "Aprendendo",
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: {
+    default: "Matheus Blog",
+    template: "%s | Matheus Blog",
+    absolute: "Sobrescreve o dois acima",
+  },
+  robots: {
+    follow: true,
+    index: true,
+  },
+  icons: {
+    icon: "/favicon.ico",
+  },
 };
 
 export default function RootLayout({
@@ -11,7 +23,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <h1>Sitema olá mundo</h1>
+        <h1>Sistema olá mundo</h1>
         {children}
       </body>
     </html>
